@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#progress update
+progress.md
+
+#qodo
+.qodo/
