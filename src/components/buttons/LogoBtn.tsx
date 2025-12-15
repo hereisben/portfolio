@@ -19,7 +19,7 @@ export default function LogoBtn() {
           fontFamily="monospace"
           fontSize="36"
           fontWeight="bold"
-          fill="#ffffff"
+          fill="#000000"
         >
           &lt;/BEN&gt;
         </text>
