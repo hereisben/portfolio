@@ -1,17 +1,33 @@
-import Image from "next/image";
+import Avatar from "@/components/cards/Avatar";
+import LeftSideCard from "@/components/cards/LeftSideCard";
+import RightSideCard from "@/components/cards/RightSideCard";
+import TagCard from "@/components/cards/TagCard";
+import { Code, Cpu } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="group relative mx-auto w-64 md:w-80 md:h-112.5 h-80 bg-[#1a1a1a] border border-white/10 overflow-hidden shadow-2xl  arch-mask">
-      <div className="pointer-events-none absolute inset-0 m-2 border border-white/10 arch-mask" />
-      <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full bg-white/60" />
-      <Image
-        src={"/thumb.png"}
-        fill
-        alt="Ben Nguyen"
-        priority
-        className="object-cover opacity-90 grayscale transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0"
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 overflow-hidden bg-black selection:bg-yellow-400 selection:text-black">
+      <TagCard label="Yo, I'm Ben Nguyen" />
+      <div className="container mx-auto px-6 relative flex flex-col items-center">
+        <div className="relative flex justify-center items-center py-10 md:py-20">
+          <h1 className="absolute text-6xl md:text-[10rem] font-bold text-white/5 tracking-tighter select-none whitespace-nowrap z-0">
+            FULL STACK ENGINEER
+          </h1>
+          <Avatar />
+        </div>
+      </div>
+      <LeftSideCard
+        classNames="top-1/3 left-4"
+        icon={<Code />}
+        subLabel="Current Status"
+        label="Internship Open"
       />
-    </div>
+      <RightSideCard
+        classNames="right-4 bottom-1/6"
+        icon={<Cpu />}
+        subLabel="Stack"
+        label="React · Node.js · MongoDB"
+      />
+    </section>
   );
 }

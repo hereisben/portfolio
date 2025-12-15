@@ -1,5 +1,5 @@
 import { Briefcase, Home, Mail, User } from "lucide-react";
-import NavIcon from "./buttons/NavIcon";
+import NavIcon from "../buttons/NavIcon";
 
 export default function NavIconContainer() {
   return (

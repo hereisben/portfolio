@@ -4,7 +4,7 @@ export default function LogoBtn() {
   return (
     <Link
       href="#"
-      className="w-10 h-10 rounded-full bg-yellow-300 flex items-center justify-center border border-white/10 hover:scale-105 transition-transform overflow-hidden p-1 shrink-0"
+      className="w-16 h-10 rounded-full bg-primary flex items-center justify-center border border-white/10 hover:scale-105 transition-transform overflow-hidden p-1 shrink-0"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -17,9 +17,9 @@ export default function LogoBtn() {
           dominantBaseline="middle"
           textAnchor="middle"
           fontFamily="monospace"
-          fontSize="34"
+          fontSize="36"
           fontWeight="bold"
-          fill="#000000"
+          fill="#ffffff"
         >
           &lt;/BEN&gt;
         </text>
