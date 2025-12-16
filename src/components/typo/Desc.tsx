@@ -1,15 +1,15 @@
+import React from "react";
+
 export default function Desc({
   classNames = "",
-  text,
+  children,
 }: {
   classNames?: string;
-  text: string;
+  children: React.ReactNode;
 }) {
   return (
-    <p
-      className={`${classNames} text-lg text-neutral-400 mb-10 leading-relaxed`}
-    >
-      {text}
+    <p className={`${classNames} text-xl text-neutral-400 leading-relaxed`}>
+      {children}
     </p>
   );
 }

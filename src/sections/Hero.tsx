@@ -7,7 +7,7 @@ import { Code, Cpu } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-16 md:pt-40 overflow-hidden bg-black selection:bg-yellow-400 selection:text-black">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-8 md:pt-40 overflow-hidden bg-black selection:bg-yellow-400 selection:text-black">
       <TagCard label="Turning Ideas into Simple Full-Stack Products" />
       <div className="container mx-auto px-6 relative flex flex-col items-center">
         <div className="relative flex justify-center items-center py-10 md:py-20">

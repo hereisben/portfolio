@@ -1,5 +1,6 @@
 import NavBar from "@/components/navigation/NavBar";
 import Hero from "@/sections/Hero";
+import Intent from "@/sections/Intent";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <NavBar />
       <main>
         <Hero />
+        <Intent />
       </main>
     </div>
   );

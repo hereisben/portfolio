@@ -4,14 +4,18 @@ import Desc from "../typo/Desc";
 import Heading2 from "../typo/Heading2";
 
 export default function IntroContainer() {
+  const highlight = "text-lime-400";
   return (
     <div className="flex flex-col mx-auto items-center justify-center gap-2 max-w-2xl">
-      <Heading2 text="Ben Nguyen" />
-      <Desc
-        text="I am a Computer Science student focusing on full-stack development, and I enjoy building web applications that are clear, usable, and designed for real users."
-        classNames="text-center"
-      />
-      <div className="flex justify-center items-center gap-2">
+      <Heading2>Ben Nguyen</Heading2>
+      <Desc classNames="text-center">
+        I am a Computer Science student focusing on full-stack development, and
+        I enjoy building web applications that are{" "}
+        <span className="text-primary">clear</span>,{" "}
+        <span className="text-primary">usable</span>, and designed for{" "}
+        <span className="text-primary">real users</span>.
+      </Desc>
+      <div className="flex justify-center items-center gap-2 py-8">
         <MainBtn
           text="Start a Project"
           icon={<ArrowRight />}
