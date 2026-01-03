@@ -24,7 +24,7 @@ export default function IntroContainer() {
         <MainBtn
           text="Download Resume"
           icon={<Download />}
-          classNames="font-semibold border hover:border-blue-200 border-white/10 hover:bg-white/5 hover:text-amber-100 text-primary backdrop-blur-md"
+          classNames="font-semibold border border-2 hover:border-primary border-white/10 hover:bg-white/5 hover:text-amber-100 text-primary backdrop-blur-md"
         />
       </div>
     </div>

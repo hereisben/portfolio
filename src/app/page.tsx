@@ -1,4 +1,5 @@
 import NavBar from "@/components/navigation/NavBar";
+import Focus from "@/sections/Focus";
 import Hero from "@/sections/Hero";
 import Intent from "@/sections/Intent";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <main>
         <Hero />
         <Intent />
+        <Focus />
       </main>
     </div>
   );

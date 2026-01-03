@@ -19,13 +19,13 @@ export default function Hero() {
       </div>
       <LeftSideCard
         classNames="top-1/3 left-4"
-        icon={<Code />}
+        icon={<Code className="text-primary" />}
         subLabel="Current Status"
         label="Internship Open"
       />
       <RightSideCard
         classNames="right-4 bottom-1/6"
-        icon={<Cpu />}
+        icon={<Cpu className="text-primary" />}
         subLabel="Stack"
         label="React · Node.js · MongoDB"
       />
