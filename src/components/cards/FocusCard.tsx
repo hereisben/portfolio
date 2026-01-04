@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function FocusCard({
@@ -14,9 +17,13 @@ export default function FocusCard({
   xPart: string;
 }) {
   return (
-    <div className="group relative border border-white/10 bg-[#121212] overflow-hidden rounded-3xl p-4 h-full group-hover:shadow-[0_0_0_1px_rgba(132,204,22,0.4)]">
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="group relative border border-white/10 bg-[#121212] overflow-hidden rounded-3xl p-4 h-full group-hover:shadow-[0_0_0_1px_rgba(132,204,22,0.4)]"
+    >
       <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 "></div>
-      <div className="relative h-full flex flex-col">
+      <div className="cursor-pointer relative h-full flex flex-col">
         <div className="relative h-48 mb-6 overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0a]">
           <Image
             fill
@@ -42,6 +49,6 @@ export default function FocusCard({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

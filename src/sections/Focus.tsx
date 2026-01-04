@@ -1,10 +1,19 @@
+"use client";
+
 import FocusContainer from "@/components/containers/FocusContainer";
 import Desc from "@/components/typo/Desc";
 import Heading2 from "@/components/typo/Heading2";
+import { motion } from "framer-motion";
 
 export default function Focus() {
   return (
-    <section className="w-full">
+    <motion.section
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      viewport={{ amount: 0.2 }}
+      className="w-full"
+    >
       <div className="bg-black px-8 py-32 flex flex-col gap-16">
         <div className="flex items-center flex-col mx-auto">
           <Heading2>What I Build</Heading2>
@@ -12,6 +21,6 @@ export default function Focus() {
         </div>
         <FocusContainer />
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -2,6 +2,7 @@ import NavBar from "@/components/navigation/NavBar";
 import Focus from "@/sections/Focus";
 import Hero from "@/sections/Hero";
 import Intent from "@/sections/Intent";
+import Journey from "@/sections/Journey";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <Intent />
         <Focus />
+        <Journey />
       </main>
     </div>
   );
