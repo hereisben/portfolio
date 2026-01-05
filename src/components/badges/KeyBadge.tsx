@@ -8,7 +8,7 @@ export default function KeyBadge({
   subLabel,
 }: {
   classNames?: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   iconClassNames?: string;
   label: string;
   subLabel: string;
