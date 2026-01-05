@@ -25,44 +25,49 @@ type Bubble = {
   vy: number;
 };
 
-function sizeToPx(size: TechItem["size"]) {
-  if (size === "xl") return 240;
-  if (size === "lg") return 200;
-  if (size === "md") return 140;
-  return 110;
+function sizeToVw(size: TechItem["size"]) {
+  if (size === "xl") return 20;
+  if (size === "lg") return 17;
+  if (size === "md") return 16;
+  return 14;
+}
+
+function vwToPx(vw: number) {
+  if (typeof window === "undefined") return vw * 10;
+  return (vw / 100) * window.innerWidth;
 }
 
 function bubbleClass(tone: NonNullable<TechItem["tone"]>) {
   const base =
-    "absolute grid place-items-center rounded-full border text-center transition-transform duration-200 will-change-transform hover:scale-[1.03] bg-gradient-to-br";
+    "absolute grid text-xs md:text-xl place-items-center rounded-full border text-center transition-[transform,box-shadow] duration-300 will-change-transform bg-gradient-to-br";
 
   if (tone === "lime")
     return (
       base +
-      " bg-primary from-[#D9F154] to-transparent text-black border-lime-200/30 shadow-[0_0_80px_rgba(217,241,84,0.5)]"
+      " bg-primary from-[#D9F154] to-transparent text-black border-lime-200/30 shadow-[0_0_80px_rgba(217,241,84,0.4)] hover:shadow-[0_0_80px_rgba(217,241,84,0.6)]"
     );
 
   if (tone === "green")
     return (
       base +
-      " bg-[#0A0A0A] from-green-500/10 to-transparent text-green-400 border-lime-200/30 shadow-[0_0_50px_rgba(34,197,94,0.3)]"
+      " bg-[#0A0A0A] from-green-500/10 to-transparent text-green-400 border-lime-200/30 hover:shadow-[0_0_50px_rgba(34,197,94,0.6)] shadow-[0_0_50px_rgba(34,197,94,0.3)]"
     );
 
   if (tone === "white")
     return (
       base +
-      " from-white to-neutral-200 text-black border-white/30 shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+      " from-white to-neutral-200 text-black border-white/30 shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)]"
     );
 
   if (tone === "blue")
     return (
       base +
-      " bg-[#0A1220] border border-blue-500/50 text-sky-200 shadow-[0_0_40px_rgba(59,130,246,0.3)]"
+      " bg-[#0A1220] border border-blue-500/50 text-sky-200 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
     );
 
   return (
     base +
-    " bg-black/10 text-neutral-200 border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+    " bg-black/10 text-neutral-200 border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
   );
 }
 
@@ -109,8 +114,8 @@ export default function Tech() {
     const H = rect.height;
 
     const init: Bubble[] = seed.map((t, i) => {
-      const px = sizeToPx(t.size);
-      const r = px / 2;
+      const diameterPx = vwToPx(sizeToVw(t.size));
+      const r = diameterPx / 2;
 
       const s = i * 999 + t.x * 10 + t.y * 20;
       const rvx = hash01(s) - 0.5;
@@ -131,6 +136,31 @@ export default function Tech() {
 
     bubblesRef.current = init;
     setBubbles([...init]);
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => {
+      const el = containerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const W = rect.width;
+      const H = rect.height;
+
+      const pad = 8;
+
+      for (const b of bubblesRef.current) {
+        const diameterPx = vwToPx(sizeToVw(b.size));
+        b.r = diameterPx / 2;
+
+        b.x = Math.max(b.r + pad, Math.min(W - b.r - pad, b.x));
+        b.y = Math.max(b.r + pad, Math.min(H - b.r - pad, b.y));
+      }
+
+      setBubbles([...bubblesRef.current]);
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
@@ -221,7 +251,7 @@ export default function Tech() {
           <div className="pointer-events-none absolute left-0 top-10 h-px w-full" />
 
           {bubbles.map((b) => {
-            const px = b.r * 2;
+            const d = b.r * 2;
 
             return (
               <div
@@ -230,9 +260,9 @@ export default function Tech() {
                   (b.tone ?? "gray") as NonNullable<TechItem["tone"]>
                 )}
                 style={{
-                  width: px,
-                  height: px,
-                  transform: `translate(${b.x - b.r}px, ${b.y - b.r}px)`,
+                  width: d,
+                  height: d,
+                  transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`,
                 }}
               >
                 <span className="select-none font-semibold">{b.label}</span>
