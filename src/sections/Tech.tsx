@@ -8,7 +8,7 @@ type TechItem = {
   id: string;
   label: string;
   size: "xl" | "lg" | "md" | "sm";
-  tone?: "lime" | "green" | "white" | "blue" | "gray";
+  tone?: "lime" | "green" | "purple" | "teal" | "blue";
   x: number;
   y: number;
 };
@@ -39,35 +39,35 @@ function vwToPx(vw: number) {
 
 function bubbleClass(tone: NonNullable<TechItem["tone"]>) {
   const base =
-    "absolute grid text-xs md:text-xl place-items-center rounded-full border text-center transition-[transform,box-shadow] duration-300 will-change-transform bg-gradient-to-br";
+    "absolute grid text-xs md:text-xl place-items-center rounded-full text-center transition-[transform,box-shadow] duration-300 will-change-transform text-neutral-800 ";
 
   if (tone === "lime")
     return (
       base +
-      " bg-primary from-[#D9F154] to-transparent text-black border-lime-200/30 shadow-[0_0_80px_rgba(217,241,84,0.4)] hover:shadow-[0_0_80px_rgba(217,241,84,0.6)]"
+      " bg-primary/90 shadow-[0_0_80px_rgba(217,241,84,0.4)] hover:shadow-[0_0_80px_rgba(217,241,84,0.6)]"
     );
 
   if (tone === "green")
     return (
       base +
-      " bg-[#0A0A0A] from-green-500/10 to-transparent text-green-400 border-lime-200/30 hover:shadow-[0_0_50px_rgba(34,197,94,0.6)] shadow-[0_0_50px_rgba(34,197,94,0.3)]"
+      " bg-green-500/90 hover:shadow-[0_0_50px_rgba(34,197,94,0.6)] shadow-[0_0_50px_rgba(34,197,94,0.3)]"
     );
 
-  if (tone === "white")
+  if (tone === "purple")
     return (
       base +
-      " from-white to-neutral-200 text-black border-white/30 shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)]"
+      " bg-purple-400/90 shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)]"
     );
 
-  if (tone === "blue")
+  if (tone === "teal")
     return (
       base +
-      " bg-[#0A1220] border border-blue-500/50 text-sky-200 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
+      " bg-teal-400/90 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
     );
 
   return (
     base +
-    " bg-black/10 text-neutral-200 border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+    " bg-blue-500/90 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
   );
 }
 
@@ -85,13 +85,13 @@ export default function Tech() {
 
   const seed: TechItem[] = [
     { id: "react", label: "React", size: "lg", tone: "lime", x: 18, y: 45 },
-    { id: "node", label: "Node.js", size: "lg", tone: "gray", x: 22, y: 72 },
-    { id: "ts", label: "TypeScript", size: "xl", tone: "white", x: 83, y: 22 },
+    { id: "node", label: "Node.js", size: "lg", tone: "blue", x: 22, y: 72 },
+    { id: "ts", label: "TypeScript", size: "xl", tone: "teal", x: 83, y: 22 },
 
     { id: "mongo", label: "MongoDB", size: "md", tone: "lime", x: 44, y: 52 },
     { id: "php", label: "PHP", size: "md", tone: "blue", x: 45, y: 66 },
 
-    { id: "next", label: "Next.js", size: "sm", tone: "gray", x: 41, y: 18 },
+    { id: "next", label: "Next.js", size: "sm", tone: "blue", x: 41, y: 18 },
     { id: "mysql", label: "MySQL", size: "sm", tone: "green", x: 72, y: 20 },
     {
       id: "tailwind",
@@ -102,7 +102,7 @@ export default function Tech() {
       y: 32,
     },
 
-    { id: "framer", label: "Framer", size: "md", tone: "white", x: 78, y: 74 },
+    { id: "framer", label: "Framer", size: "md", tone: "purple", x: 78, y: 74 },
   ];
 
   useEffect(() => {
