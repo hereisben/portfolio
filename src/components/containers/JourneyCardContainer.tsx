@@ -7,7 +7,7 @@ import JourneyCard from "../cards/JourneyCard";
 export default function JourneyCardContainer() {
   return (
     <div className={`relative mx-auto flex flex-col gap-8 pl-10 md:pl-0`}>
-      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent shadow-[0_0_10px_#D9F154]"></div>
+      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary via-primary/50 to-transparent shadow-[0_0_10px_#D9F154]"></div>
       <div className="relative md:-translate-x-1/2">
         <Dot classNames="md:-right-2 -left-12 md:left-auto" />
         <JourneyCard

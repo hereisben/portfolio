@@ -3,6 +3,7 @@ import Focus from "@/sections/Focus";
 import Hero from "@/sections/Hero";
 import Intent from "@/sections/Intent";
 import Journey from "@/sections/Journey";
+import QnA from "@/sections/QnA";
 import Tech from "@/sections/Tech";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Focus />
         <Journey />
         <Tech />
+        <QnA />
       </main>
     </div>
   );

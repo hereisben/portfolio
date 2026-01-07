@@ -56,13 +56,13 @@ function bubbleClass(tone: NonNullable<TechItem["tone"]>) {
   if (tone === "purple")
     return (
       base +
-      " bg-purple-400/90 shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)]"
+      " bg-purple-400/90 shadow-[0_0_60px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.8)]"
     );
 
   if (tone === "teal")
     return (
       base +
-      " bg-teal-400/90 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
+      " bg-teal-400/90 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]"
     );
 
   return (
