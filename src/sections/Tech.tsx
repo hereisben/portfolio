@@ -237,7 +237,7 @@ export default function Tech() {
   }, []);
 
   return (
-    <section className="w-full px-4 py-16">
+    <section className="w-full pt-16 pb-16 px-8">
       <div className="mx-auto">
         <div className="flex flex-col mx-auto">
           <Heading2>Tech I Build With</Heading2>

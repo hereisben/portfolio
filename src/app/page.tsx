@@ -1,4 +1,5 @@
-import NavBar from "@/components/navigation/NavBar";
+import NavBar from "@/components/layout/NavBar";
+import Contact from "@/sections/Contact";
 import Focus from "@/sections/Focus";
 import Hero from "@/sections/Hero";
 import Intent from "@/sections/Intent";
@@ -17,6 +18,7 @@ export default function Home() {
         <Journey />
         <Tech />
         <QnA />
+        <Contact />
       </main>
     </div>
   );
