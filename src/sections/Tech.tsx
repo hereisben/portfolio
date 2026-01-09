@@ -26,10 +26,10 @@ type Bubble = {
 };
 
 function sizeToVw(size: TechItem["size"]) {
-  if (size === "xl") return 20;
-  if (size === "lg") return 17;
-  if (size === "md") return 16;
-  return 14;
+  if (size === "xl") return 18;
+  if (size === "lg") return 15;
+  if (size === "md") return 12;
+  return 10;
 }
 
 function vwToPx(vw: number) {
@@ -39,7 +39,7 @@ function vwToPx(vw: number) {
 
 function bubbleClass(tone: NonNullable<TechItem["tone"]>) {
   const base =
-    "absolute grid text-xs md:text-xl place-items-center rounded-full text-center transition-[transform,box-shadow] duration-300 will-change-transform text-neutral-800 ";
+    "absolute grid text-[6px] min-[376]:text-lg lg:text-xl place-items-center rounded-full text-center transition-[transform,box-shadow] duration-300 will-change-transform text-neutral-800 overflow-hidden ";
 
   if (tone === "lime")
     return (
@@ -248,7 +248,7 @@ export default function Tech() {
           ref={containerRef}
           className="mt-12 relative h-[50vh] w-full rounded-3xl"
         >
-          <div className="pointer-events-none absolute left-0 top-10 h-px w-full" />
+          <div className="pointer-events-none absolute left-0 top-10 h-px w-full " />
 
           {bubbles.map((b) => {
             const d = b.r * 2;
@@ -265,7 +265,7 @@ export default function Tech() {
                   transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`,
                 }}
               >
-                <span className="select-none font-semibold">{b.label}</span>
+                <span className="select-none font-semibold ">{b.label}</span>
               </div>
             );
           })}

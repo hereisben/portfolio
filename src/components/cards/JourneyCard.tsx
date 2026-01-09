@@ -1,5 +1,6 @@
 import { motion, type MotionProps } from "framer-motion";
 import { Calendar, Milestone } from "lucide-react";
+import CanRunFramer from "../hooks/CanRunFramer";
 
 export default function JourneyCard({
   classNames = "",
@@ -16,9 +17,10 @@ export default function JourneyCard({
   subLabel: string;
   desc: string;
 }) {
+  const canRunFramer = CanRunFramer();
   return (
     <motion.div
-      {...motionProps}
+      {...(canRunFramer ? motionProps : {})}
       className={`max-w-sm p-6 rounded-2xl border border-white/5 bg-[#121212] hover:border-primary/30 transition-colors group ${classNames}`}
     >
       <span className="inline-flex items-center gap-2 text-primary text-xs font-mono mb-2 border border-primary/20 px-2 py-1 rounded">

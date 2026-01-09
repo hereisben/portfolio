@@ -12,18 +12,21 @@ export default function Contact() {
             <p>Got a Project?</p>{" "}
             <span className="text-primary">Lets Talk!</span>
           </Heading2>
-          <div className="flex flex-col gap-2">
-            <Link href={"mailto:hi.imben.nguyen@gmail.com"}>
+          <div className="flex flex-col gap-2 ">
+            <Link
+              className="max-w-max"
+              href={"mailto:hi.imben.nguyen@gmail.com"}
+            >
               <Desc classNames="text-white/80 hover:text-primary transition-color duration-300 ease">
                 hi.imben.nguyen@gmail.com
               </Desc>
             </Link>
-            <Link href={"tel:#16692008543"}>
+            <Link className="max-w-max" href={"tel:#16692008543"}>
               <Desc classNames="text-white/80 hover:text-primary transition-color duration-300 ease">
                 +1 669 200 8543
               </Desc>
             </Link>
-            <Link href={"tel:+84346182583"}>
+            <Link className="max-w-max" href={"tel:+84346182583"}>
               <Desc classNames="text-white/80 hover:text-primary transition-color duration-300 ease">
                 +84 346 182 583
               </Desc>

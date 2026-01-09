@@ -2,7 +2,7 @@ import FocusCard from "../cards/FocusCard";
 
 export default function FocusContainer() {
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid md:grid-cols-3 gap-8">
       <FocusCard
         label="Course Projects"
         imgUrl="/course.jpg"

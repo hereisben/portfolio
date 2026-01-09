@@ -7,7 +7,8 @@ export default function IntentContainer() {
   return (
     <div className="flex flex-col justify-center gap-2 max-w-max">
       <Heading2 classNames="w-xl">
-        Built on Logic, <span className="text-primary">Finish with Care</span>
+        <p>Built on Logic,</p>{" "}
+        <span className="text-primary">Finish with Care</span>
       </Heading2>
       <Desc classNames="mb-5">
         When I work on a project, I try to understand the{" "}
