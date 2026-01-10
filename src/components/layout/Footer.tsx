@@ -3,7 +3,10 @@ import FooterIcon from "../buttons/FooterIcon";
 
 export default function Footer() {
   return (
-    <footer id="footer" className="relative pt-32 pb-10 overflow-hidden">
+    <footer
+      id="footer"
+      className="relative pt-32 pb-10 overflow-hidden select-none"
+    >
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-8">
           Ben Nguyen <span className="text-primary">.</span>

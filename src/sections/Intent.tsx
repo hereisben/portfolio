@@ -9,7 +9,7 @@ export default function Intent() {
   const canRunFramer = CanRunFramer();
   return (
     <motion.section
-      id="about"
+      id="intent"
       initial={canRunFramer ? { opacity: 0, x: 24 } : false}
       whileInView={canRunFramer ? { opacity: 1, x: 0 } : undefined}
       transition={

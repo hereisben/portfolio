@@ -23,8 +23,8 @@ export default function Hero() {
       <LeftSideCard
         classNames="top-1/3 left-4"
         icon={<Code className="text-primary" />}
-        subLabel="Current Status"
-        label="Internship Open"
+        subLabel="Junior Software Engineer"
+        label="Open to Opportunities"
       />
       <RightSideCard
         classNames="right-4 bottom-1/6"

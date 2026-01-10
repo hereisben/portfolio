@@ -6,7 +6,7 @@ export default function NavIconContainer() {
     <div className="flex items-center gap-1 shrink-0">
       <NavIcon url="#hero" icon={<Home className="w-5 h-5" />} label="Home" />
       <NavIcon
-        url="#about"
+        url="#intent"
         icon={<Target className="w-5 h-5" />}
         label="Intent"
       />
