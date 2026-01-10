@@ -11,6 +11,17 @@ export default function ContactContainer() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+
+  const isValidName =
+    /^[a-zA-ZÀ-ỹ\s]+$/.test(name.trim()) &&
+    name.length >= 2 &&
+    name.length <= 40 &&
+    name.trim().length >= 2;
+  const isValidEmail =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) &&
+    email.trim().length <= 254;
+  const isValidMessage = message.trim().length <= 500;
+  const errorClass = "text-sm text-red-400/80 absolute -bottom-7 right-0";
   const canSend = useMemo(() => {
     return (
       selected?.trim().length > 0 &&
@@ -40,37 +51,58 @@ export default function ContactContainer() {
           />
         ))}
       </div>
-      <form action="" className="space-y-6" id="contact-form">
+      <form noValidate action="" className="space-y-6" id="contact-form">
         <input
           type="hidden"
           name="project-type"
           id="project-type"
           value={selected ? selected : ""}
         />
-        <TextInput
-          type="text"
-          placeHolder="Your Name"
-          name="name"
-          required={true}
-          value={name}
-          setState={setName}
-        />
-        <TextInput
-          type="email"
-          placeHolder="Email"
-          name="email"
-          value={email}
-          setState={setEmail}
-          required={true}
-        />
-        <textarea
-          name="message"
-          id="message"
-          placeholder="Message"
-          className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
+        <div className="relative">
+          <TextInput
+            type="text"
+            placeHolder="Your Name"
+            name="name"
+            required={true}
+            value={name}
+            setState={setName}
+            pattern="^[a-zA-ZÀ-ỹ\s]+$"
+          />
+          {!isValidName && name.length > 0 && (
+            <p className={`${errorClass}`}>
+              Name should be 2–40 characters and contain letters only.
+            </p>
+          )}
+        </div>
+        <div className="relative">
+          <TextInput
+            type="email"
+            placeHolder="Email"
+            name="email"
+            value={email}
+            setState={setEmail}
+            required={true}
+          />
+          {!isValidEmail && email.length > 0 && (
+            <p className={`${errorClass}`}>
+              Please enter a valid email address.
+            </p>
+          )}
+        </div>
+        <div className="relative">
+          <textarea
+            name="message"
+            id="message"
+            rows={5}
+            placeholder="Message"
+            className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          ></textarea>
+          <p className="text-xs text-neutral-400 text-right absolute right-3 bottom-3 opacity-50">
+            {message.trim().length} / 500
+          </p>
+        </div>
         <input
           ref={inputRef}
           onChange={(e) => {
@@ -95,7 +127,9 @@ export default function ContactContainer() {
           {file ? "Change File" : "Attach File"}
         </button>
         <button
-          disabled={!canSend}
+          disabled={
+            !canSend || !isValidName || !isValidEmail || !isValidMessage
+          }
           form="contact-form"
           type="submit"
           className="inline-flex h-11 items-center justify-center text-sm duration-200 active:scale-95 bg-primary disabled:opacity-20 shadow-lg shadow-blue-500/25 disabled:bg-white text-black active:bg-primary px-8 py-3 rounded-xl font-bold transition-all active:cursor-pointer"

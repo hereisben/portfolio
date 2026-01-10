@@ -6,6 +6,7 @@ export default function TextInput({
   name = "",
   setState,
   value,
+  pattern,
 }: {
   classNames?: string;
   placeHolder?: string;
@@ -14,6 +15,7 @@ export default function TextInput({
   setState: (v: string) => void;
   name?: string;
   value: string;
+  pattern?: string;
 }) {
   return (
     <input
@@ -25,8 +27,9 @@ export default function TextInput({
       type={type}
       required={required}
       placeholder={`${placeHolder}`}
-      className={`${classNames} w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600`}
+      className={`${classNames} relative w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600`}
       value={value}
+      pattern={pattern}
     ></input>
   );
 }
