@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, Target, TrendingUp } from "lucide-react";
 import KeyBadge from "../badges/KeyBadge";
 
-export default function AboutCard() {
+export default function IntentCard() {
   return (
     <motion.div
       whileHover={{ y: -10 }}

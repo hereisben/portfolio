@@ -1,11 +1,11 @@
 "use client";
 
-import AboutCard from "@/components/cards/AboutCard";
-import AboutContainer from "@/components/containers/AboutContainer";
+import AboutCard from "@/components/cards/IntentCard";
+import AboutContainer from "@/components/containers/IntentContainer";
 import CanRunFramer from "@/components/hooks/CanRunFramer";
 import { motion } from "framer-motion";
 
-export default function About() {
+export default function Intent() {
   const canRunFramer = CanRunFramer();
   return (
     <motion.section

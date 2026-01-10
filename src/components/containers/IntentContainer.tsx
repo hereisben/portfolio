@@ -2,7 +2,7 @@ import StatsBadge from "../badges/StatsBadge";
 import Desc from "../typo/Desc";
 import Heading2 from "../typo/Heading2";
 
-export default function AboutContainer() {
+export default function IntentContainer() {
   const hightlight = "text-white font-semibold";
   return (
     <div className="flex flex-col justify-center gap-2 max-w-max">
