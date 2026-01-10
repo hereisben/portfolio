@@ -10,6 +10,7 @@ export default function Focus() {
   const canRunFramer = CanRunFramer();
   return (
     <motion.section
+      id="focus"
       initial={canRunFramer ? { opacity: 0, y: 18 } : false}
       whileInView={canRunFramer ? { opacity: 1, y: 0 } : undefined}
       transition={

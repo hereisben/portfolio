@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <section className="w-full">
+    <section id="contact" className="w-full">
       <div className="grid lg:grid-cols-2 md:p-10 px-8 pb-16 pt-16">
         <div>
           <Heading2>

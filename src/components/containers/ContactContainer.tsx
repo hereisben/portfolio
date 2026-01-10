@@ -7,7 +7,7 @@ import TextInput from "../typo/TextInput";
 export default function ContactContainer() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>("Fullstack Dev");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
