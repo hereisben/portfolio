@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function CanRunFramer() {
+export default function useCanRunFramer() {
   const [canRunFramer, setCanRunFramer] = useState(false);
   useEffect(() => {
     const check = () => {

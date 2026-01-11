@@ -2,7 +2,7 @@ import Avatar from "@/components/cards/Avatar";
 import LeftSideCard from "@/components/cards/LeftSideCard";
 import RightSideCard from "@/components/cards/RightSideCard";
 import TagCard from "@/components/cards/TagCard";
-import IntroContainer from "@/components/containers/IntroContainer";
+import HeroContainer from "@/components/containers/HeroContainer";
 import { Code, Cpu } from "lucide-react";
 
 export default function Hero() {
@@ -32,7 +32,7 @@ export default function Hero() {
         subLabel="Stack"
         label="React · Node.js · MongoDB"
       />
-      <IntroContainer />
+      <HeroContainer />
     </section>
   );
 }

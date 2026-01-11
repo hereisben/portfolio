@@ -1,6 +1,6 @@
 import { motion, type MotionProps } from "framer-motion";
 import { Calendar, Milestone } from "lucide-react";
-import CanRunFramer from "../hooks/CanRunFramer";
+import useCanRunFramer from "../hooks/useCanRunFramer";
 
 export default function JourneyCard({
   classNames = "",
@@ -17,7 +17,7 @@ export default function JourneyCard({
   subLabel: string;
   desc: string;
 }) {
-  const canRunFramer = CanRunFramer();
+  const canRunFramer = useCanRunFramer();
   return (
     <motion.div
       {...(canRunFramer ? motionProps : {})}

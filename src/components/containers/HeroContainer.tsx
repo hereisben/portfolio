@@ -3,7 +3,7 @@ import MainBtn from "../buttons/MainBtn";
 import Desc from "../typo/Desc";
 import Heading2 from "../typo/Heading2";
 
-export default function IntroContainer() {
+export default function HeroContainer() {
   const highlight = "text-lime-400";
   return (
     <div className="flex flex-col mx-auto items-center justify-center gap-2 max-w-2xl">
@@ -24,7 +24,7 @@ export default function IntroContainer() {
         />
         <MainBtn
           target="_blank"
-          href="/Resume_Ben-Nguyen_Full-Stack-Software-Engineer.pdf"
+          href="/resume.pdf"
           text="View Resume"
           icon={<Eye />}
           classNames="font-semibold border border-2 hover:border-primary border-white/10 hover:bg-white/5 hover:text-amber-100 text-primary backdrop-blur-md"

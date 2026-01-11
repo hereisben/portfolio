@@ -164,9 +164,9 @@ export default function ContactContainer() {
           id="attached-file"
           hidden
         />
-        <p className="w-full bg-transparent text-neutral-600 inline-flex justify-end">
+        {/* <p className="w-full bg-transparent text-neutral-600 inline-flex justify-end">
           {file ? file.name : "No Attachment"}
-        </p>
+        </p> */}
         {sendStatus === "ok" && (
           <p className="text-sm text-green-400/80">Sent. I will reply soon.</p>
         )}

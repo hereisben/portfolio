@@ -1,5 +1,5 @@
 import { Facebook, Github, Linkedin, Mail } from "lucide-react";
-import FooterIcon from "../buttons/FooterIcon";
+import FooterIcon from "../icons/FooterIcon";
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
             icon={<Github size={18} />}
           />
           <FooterIcon
-            href="www.linkedin.com/in/here-is-ben"
+            href="https://linkedin.com/in/here-is-ben"
             icon={<Linkedin size={18} />}
           />
           <FooterIcon

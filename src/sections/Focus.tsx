@@ -1,13 +1,13 @@
 "use client";
 
 import FocusContainer from "@/components/containers/FocusContainer";
-import CanRunFramer from "@/components/hooks/CanRunFramer";
+import useCanRunFramer from "@/components/hooks/useCanRunFramer";
 import Desc from "@/components/typo/Desc";
 import Heading2 from "@/components/typo/Heading2";
 import { motion } from "framer-motion";
 
 export default function Focus() {
-  const canRunFramer = CanRunFramer();
+  const canRunFramer = useCanRunFramer();
   return (
     <motion.section
       id="focus"

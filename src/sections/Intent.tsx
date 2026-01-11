@@ -2,11 +2,11 @@
 
 import AboutCard from "@/components/cards/IntentCard";
 import AboutContainer from "@/components/containers/IntentContainer";
-import CanRunFramer from "@/components/hooks/CanRunFramer";
+import useCanRunFramer from "@/components/hooks/useCanRunFramer";
 import { motion } from "framer-motion";
 
 export default function Intent() {
-  const canRunFramer = CanRunFramer();
+  const canRunFramer = useCanRunFramer();
   return (
     <motion.section
       id="intent"
