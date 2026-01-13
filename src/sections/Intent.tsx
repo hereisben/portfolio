@@ -16,7 +16,7 @@ export default function Intent() {
         canRunFramer ? { duration: 0.55, ease: "easeOut" } : undefined
       }
       viewport={canRunFramer ? { amount: 0.2 } : undefined}
-      className="relative pt-16 pb-16 md:pt-20 overflow-hidden bg-background selection:bg-yellow-400 selection:text-black px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+      className="relative pt-16 pb-16 md:pt-20 overflow-hidden bg-background px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
     >
       <AboutContainer />
       <div className="relative isolate">

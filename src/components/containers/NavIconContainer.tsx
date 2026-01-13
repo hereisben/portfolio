@@ -4,19 +4,19 @@ import NavIcon from "../icons/NavIcon";
 export default function NavIconContainer() {
   return (
     <div className="flex items-center gap-1 shrink-0">
-      <NavIcon url="#hero" icon={<Home className="w-5 h-5" />} label="Home" />
+      <NavIcon url="/#hero" icon={<Home className="w-5 h-5" />} label="Home" />
       <NavIcon
-        url="#intent"
+        url="/#intent"
         icon={<Target className="w-5 h-5" />}
         label="Intent"
       />
       <NavIcon
-        url="#focus"
+        url="/#focus"
         icon={<Briefcase className="w-5 h-5" />}
         label="Project"
       />
       <NavIcon
-        url="#contact"
+        url="/#contact"
         icon={<Mail className="w-5 h-5" />}
         label="Contact"
       />

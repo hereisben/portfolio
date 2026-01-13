@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-8 md:pt-40 overflow-hidden bg-black selection:bg-yellow-400 selection:text-black"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-8 md:pt-40 overflow-hidden bg-black "
     >
       <TagCard label="Turning Ideas into Simple Full-Stack Products" />
       <div className="container mx-auto px-6 relative flex flex-col items-center">

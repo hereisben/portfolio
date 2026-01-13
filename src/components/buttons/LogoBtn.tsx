@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function LogoBtn() {
   return (
     <Link
-      href={`#hero`}
+      href={`/`}
       className="w-16 h-10 rounded-full bg-primary flex items-center justify-center border border-white/10 hover:scale-105 transition-transform overflow-hidden p-1 shrink-0"
     >
       <svg
