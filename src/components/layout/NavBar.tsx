@@ -1,6 +1,6 @@
 "use client";
 
-import HireBtn from "@/components/buttons/HireBtn";
+import ContactBtn from "@/components/buttons/ContactBtn";
 import LogoBtn from "@/components/buttons/LogoBtn";
 import NavIconContainer from "@/components/containers/NavIconContainer";
 import { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ export default function ComponentName() {
         <NavIconContainer />
         {/*  */}
         <div className="md:block w-px h-6 bg-white/10 mx-2"></div>
-        <HireBtn />
+        <ContactBtn />
       </div>
     </nav>
   );

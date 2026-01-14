@@ -1,4 +1,4 @@
-import { Briefcase, Home, Mail, Target } from "lucide-react";
+import { Briefcase, Home, Route, Target } from "lucide-react";
 import NavIcon from "../icons/NavIcon";
 
 export default function NavIconContainer() {
@@ -16,9 +16,9 @@ export default function NavIconContainer() {
         label="Project"
       />
       <NavIcon
-        url="/#contact"
-        icon={<Mail className="w-5 h-5" />}
-        label="Contact"
+        url="/#journey"
+        icon={<Route className="w-5 h-5" />}
+        label="Journey"
       />
     </div>
   );

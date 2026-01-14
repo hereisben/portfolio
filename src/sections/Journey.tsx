@@ -4,7 +4,7 @@ import Heading2 from "@/components/typo/Heading2";
 
 export default function Journey() {
   return (
-    <section className="w-full">
+    <section id="journey" className="w-full">
       <div className="bg-black px-8 py-12 flex flex-col gap-16">
         <div className="flex flex-col mx-auto items-center">
           <Heading2>Journey</Heading2>
