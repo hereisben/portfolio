@@ -4,9 +4,8 @@ import Desc from "../typo/Desc";
 import Heading2 from "../typo/Heading2";
 
 export default function HeroContainer() {
-  const highlight = "text-lime-400";
   return (
-    <div className="flex flex-col mx-auto items-center justify-center gap-2 max-w-2xl">
+    <div className="w-full flex flex-col mx-auto items-center justify-center gap-2 max-w-2xl">
       <Heading2>Ben Nguyen</Heading2>
       <Desc classNames="text-center">
         I am a Computer Science student focusing on full-stack development, and
@@ -15,7 +14,7 @@ export default function HeroContainer() {
         <span className="text-primary">usable</span>, and designed for{" "}
         <span className="text-primary">real users</span>.
       </Desc>
-      <div className="flex justify-center items-center gap-2 py-8">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 py-8">
         <MainBtn
           href="#contact"
           text="Start a Project"

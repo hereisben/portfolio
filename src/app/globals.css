@@ -38,3 +38,15 @@ select:-webkit-autofill {
   -webkit-text-fill-color: #ffffff;
   transition: background-color 9999s ease-in-out 0s;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}

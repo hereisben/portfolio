@@ -3,7 +3,7 @@ import NavIcon from "../icons/NavIcon";
 
 export default function NavIconContainer() {
   return (
-    <div className="flex items-center gap-1 shrink-0">
+    <div className="flex items-center md:gap-1 shrink-0">
       <NavIcon url="/#hero" icon={<Home className="w-5 h-5" />} label="Home" />
       <NavIcon
         url="/#intent"

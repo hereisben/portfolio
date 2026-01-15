@@ -8,7 +8,7 @@ export default function Footer() {
       className="relative pt-32 pb-10 overflow-hidden select-none"
     >
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-8">
+        <h2 className="text-3xl font-bold mb-8 text-white">
           Ben Nguyen <span className="text-primary">.</span>
         </h2>
         <div className="flex justify-center gap-6 mb-8">

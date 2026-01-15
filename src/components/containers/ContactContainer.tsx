@@ -79,7 +79,7 @@ export default function ContactContainer() {
       <h3 className="text-xl font-bold mb-6 text-white">
         I am interested in ...
       </h3>
-      <div className="flex flex-wrap gap-3 mb-8">
+      <div className="flex flex-nowrap overflow-x-auto md:overflow-visible scroll-touch touch-pan-x md:flex-wrap gap-3 mb-8 no-scrollbar snap-x snap-mandatory ">
         {[
           "Web Design",
           "Fullstack Dev",
@@ -87,12 +87,14 @@ export default function ContactContainer() {
           "Game Dev",
           "Other",
         ].map((item) => (
-          <SelectBtn
-            key={item}
-            label={item}
-            onClick={() => setSelected(item)}
-            isSelected={selected === item}
-          />
+          <div key={item} className="snap-start shrink-0">
+            <SelectBtn
+              key={item}
+              label={item}
+              onClick={() => setSelected(item)}
+              isSelected={selected === item}
+            />
+          </div>
         ))}
       </div>
       <form

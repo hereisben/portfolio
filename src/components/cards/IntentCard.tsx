@@ -9,7 +9,7 @@ export default function IntentCard() {
     <motion.div
       whileHover={{ y: -10 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="bg-[#121212] border border-white/10 p-8 rounded-3xl relative shadow-2xl relative z-0"
+      className="bg-[#121212] border border-white/10 p-8 rounded-3xl relative shadow-2xl z-0"
     >
       <div className="flex gap-2 mb-6 border-b border-white/5 pb-4">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>

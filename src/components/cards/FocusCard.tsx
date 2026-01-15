@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import useCanRunFramer from "../hooks/useCanRunFramer";
 
 export default function FocusCard({
   imgUrl = "",
@@ -19,11 +20,14 @@ export default function FocusCard({
   xPart: string;
   href: string;
 }) {
+  const canUseFramer = useCanRunFramer();
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className="group relative border border-white/10 bg-[#121212] overflow-hidden rounded-3xl p-4 h-full group-hover:shadow-[0_0_0_1px_rgba(132,204,22,0.4)]"
+      whileHover={canUseFramer ? { y: -5 } : undefined}
+      transition={
+        canUseFramer ? { duration: 0.25, ease: "easeOut" } : undefined
+      }
+      className="group relative border border-white/10 bg-[#121212] overflow-hidden rounded-3xl p-4 group-hover:shadow-[0_0_0_1px_rgba(132,204,22,0.4)]"
     >
       <Link href={href}>
         <div className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 "></div>
@@ -46,7 +50,7 @@ export default function FocusCard({
             <span className="text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
               {xPart}
             </span>
-            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-colors duration-300">
+            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary text-white group-hover:text-black transition-colors duration-300">
               <span className="text-sm -rotate-45 group-hover:rotate-0 transition-transform duration-300">
                 →
               </span>

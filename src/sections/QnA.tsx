@@ -5,7 +5,7 @@ import Heading2 from "@/components/typo/Heading2";
 export default function QnA() {
   return (
     <section className="w-full">
-      <div className="bg-black px-8 py-8 mb-12 flex flex-col gap-8 max-w-3xl mx-auto">
+      <div className="bg-black px-4 md:px-8 py-8 md:mb-12 flex flex-col gap-8 max-w-3xl mx-auto">
         <div className="flex flex-col items-center text-center mx-auto leading-">
           <TagCard label="FAQs" />
           <Heading2 classNames="mt-2 leading-snug">

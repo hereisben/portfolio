@@ -10,7 +10,7 @@ import Tech from "@/sections/Tech";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black overflow-hidden selection:bg-yellow-400 selection:text-black">
+    <div className="min-h-screen font-sans bg-black overflow-hidden selection:bg-yellow-400 selection:text-black">
       <NavBar />
       <main>
         <Hero />

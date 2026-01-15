@@ -6,13 +6,13 @@ import Link from "next/link";
 export default function Contact() {
   return (
     <section id="contact" className="w-full">
-      <div className="grid lg:grid-cols-2 md:p-10 px-8 pb-16 pt-16">
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 px-4 md:p-10 pb-16 pt-16 gap-8">
+        <div className="w-full">
           <Heading2>
             <p>Got a Project?</p>{" "}
             <span className="text-primary">Lets Talk!</span>
           </Heading2>
-          <div className="flex flex-col gap-2 ">
+          <div className="flex flex-col gap-2 w-full ">
             <Link
               className="max-w-max"
               href={"mailto:hi.imben.nguyen@gmail.com"}

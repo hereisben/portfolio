@@ -10,7 +10,7 @@ export default function FooterIcon({
 }) {
   return (
     <Link
-      className="p-3 bg-[#121212] rounded-full hover:bg-primary hover:text-black transition-all transform hover:scale-110 border border-white/5 cursor-pointer"
+      className="p-3 bg-[#121212] rounded-full hover:bg-primary hover:text-black transition-all transform hover:scale-110 border border-white/5 cursor-pointer text-white"
       href={href}
       target="_blank"
     >

@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-8 md:pt-40 overflow-hidden bg-black "
+      className="relative min-h-screen flex flex-col items-center justify-center pt-32 md:pb-8 px-4 md:pt-40 overflow-hidden bg-black "
     >
       <TagCard label="Turning Ideas into Simple Full-Stack Products" />
       <div className="container mx-auto px-6 relative flex flex-col items-center">
@@ -20,18 +20,22 @@ export default function Hero() {
           <Avatar />
         </div>
       </div>
-      <LeftSideCard
-        classNames="top-1/3 left-4"
-        icon={<Code className="text-primary" />}
-        subLabel="Junior Software Engineer"
-        label="Open to Opportunities"
-      />
-      <RightSideCard
-        classNames="right-4 bottom-1/6"
-        icon={<Cpu className="text-primary" />}
-        subLabel="Stack"
-        label="React · Node.js · MongoDB"
-      />
+      <div className="hidden lg:block">
+        <LeftSideCard
+          classNames="top-1/3 left-4"
+          icon={<Code className="text-primary" />}
+          subLabel="Junior Software Engineer"
+          label="Open to Opportunities"
+        />
+      </div>
+      <div className="hidden lg:block">
+        <RightSideCard
+          classNames="right-4 bottom-1/3"
+          icon={<Cpu className="text-primary" />}
+          subLabel="Stack"
+          label="React · Node.js · MongoDB"
+        />
+      </div>
       <HeroContainer />
     </section>
   );
