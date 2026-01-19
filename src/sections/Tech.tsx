@@ -39,12 +39,12 @@ function vwToPx(vw: number) {
 
 function bubbleClass(tone: NonNullable<TechItem["tone"]>) {
   const base =
-    "absolute grid text-[6px] min-[376]:text-lg lg:text-xl place-items-center rounded-full text-center transition-[transform,box-shadow] duration-300 will-change-transform text-neutral-800 overflow-hidden ";
+    "absolute grid text-[6px] min-[376px]:text-lg lg:text-xl place-items-center rounded-full text-center transition-[transform,box-shadow] duration-300 [@media(hover:none)]:transition-none will-change-transform text-neutral-800 overflow-hidden [@media(hover:none)]:shadow-none ";
 
   if (tone === "lime")
     return (
       base +
-      " bg-primary/90 shadow-[0_0_80px_rgba(217,241,84,0.4)] hover:shadow-[0_0_80px_rgba(217,241,84,0.6)]"
+      ` bg-primary/90 shadow-[0_0_80px_rgba(217,241,84,0.4)] hover:shadow-[0_0_80px_rgba(217,241,84,0.6)]`
     );
 
   if (tone === "green")
@@ -83,23 +83,25 @@ export default function Tech() {
   const timeRef = useRef(0);
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
 
+  const bubbleElsRef = useRef<Record<string, HTMLDivElement | null>>({});
+
   const seed: TechItem[] = [
     { id: "react", label: "React", size: "lg", tone: "lime", x: 18, y: 45 },
-    { id: "node", label: "Node.js", size: "lg", tone: "blue", x: 22, y: 72 },
+    { id: "node", label: "Node.js", size: "lg", tone: "blue", x: 30, y: 72 },
     { id: "ts", label: "TypeScript", size: "xl", tone: "teal", x: 83, y: 22 },
 
     { id: "mongo", label: "MongoDB", size: "md", tone: "lime", x: 44, y: 52 },
     { id: "php", label: "PHP", size: "md", tone: "blue", x: 45, y: 66 },
 
     { id: "next", label: "Next.js", size: "sm", tone: "blue", x: 41, y: 18 },
-    { id: "mysql", label: "MySQL", size: "sm", tone: "green", x: 72, y: 20 },
+    { id: "mysql", label: "MySQL", size: "sm", tone: "green", x: 62, y: 20 },
     {
       id: "tailwind",
       label: "Tailwind",
       size: "sm",
       tone: "lime",
       x: 77,
-      y: 32,
+      y: 42,
     },
 
     { id: "framer", label: "Framer", size: "md", tone: "purple", x: 78, y: 74 },
@@ -139,100 +141,122 @@ export default function Tech() {
   }, []);
 
   useEffect(() => {
-    const onResize = () => {
-      const el = containerRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const W = rect.width;
-      const H = rect.height;
-
-      const pad = 8;
-
-      for (const b of bubblesRef.current) {
-        const diameterPx = vwToPx(sizeToVw(b.size));
-        b.r = diameterPx / 2;
-
-        b.x = Math.max(b.r + pad, Math.min(W - b.r - pad, b.x));
-        b.y = Math.max(b.r + pad, Math.min(H - b.r - pad, b.y));
-      }
-
-      setBubbles([...bubblesRef.current]);
-    };
-
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const friction = 0.985;
+    let last = performance.now();
+
+    let W = el.clientWidth;
+    let H = el.clientHeight;
+
+    const ro = new ResizeObserver(() => {
+      W = el.clientWidth;
+      H = el.clientHeight;
+
+      const pad = 8;
+      for (const b of bubblesRef.current) {
+        const d = vwToPx(sizeToVw(b.size));
+        b.r = d / 2;
+        b.x = Math.max(b.r + pad, Math.min(W - b.r - pad, b.x));
+        b.y = Math.max(b.r + pad, Math.min(H - b.r - pad, b.y));
+
+        const node = bubbleElsRef.current[b.id];
+        if (node) {
+          node.style.width = `${b.r * 2}px`;
+          node.style.height = `${b.r * 2}px`;
+        }
+      }
+    });
+
+    ro.observe(el);
+
+    const isSmall = typeof window !== "undefined" && window.innerWidth < 768;
+    const friction = isSmall ? 0.998 : 0.985;
     const maxSpeed = 10;
     const wanderStrength = 0.45;
+    const pad = 8;
 
-    const step = () => {
-      const rect = el.getBoundingClientRect();
-      const W = rect.width;
-      const H = rect.height;
+    const speedMul = isSmall ? 0.55 : 1.2;
+    const wanderMul = isSmall ? 0.55 : 1.25;
 
-      timeRef.current += 0.016;
+    let acc = 0;
+
+    const FIXED_DT = 1 / 60;
+    const MAX_CATCHUP = 0.25;
+
+    const step = (now: number) => {
+      let dt = (now - last) / 1000;
+      last = now;
+
+      dt = Math.min(dt, MAX_CATCHUP);
+
+      acc += dt;
+
+      while (acc >= FIXED_DT) {
+        timeRef.current += FIXED_DT;
+
+        for (const b of bubblesRef.current) {
+          const seed = timeRef.current * 10 + b.x * 0.01 + b.y * 0.01;
+          const n1 = hash01(seed);
+          const n2 = hash01(seed + 100);
+
+          const angle = n1 * Math.PI * 2;
+          const force = (n2 - 0.5) * wanderStrength * wanderMul;
+
+          b.vx += Math.cos(angle) * force;
+          b.vy += Math.sin(angle) * force;
+
+          b.vx *= friction;
+          b.vy *= friction;
+
+          const sp = Math.hypot(b.vx, b.vy);
+          const maxSp = maxSpeed * speedMul;
+          if (sp > maxSp) {
+            b.vx = (b.vx / sp) * maxSp;
+            b.vy = (b.vy / sp) * maxSp;
+          }
+
+          // move
+          b.x += b.vx;
+          b.y += b.vy;
+
+          // bounce
+          if (b.x < b.r + pad) {
+            b.x = b.r + pad;
+            b.vx *= -0.9;
+          }
+          if (b.x > W - b.r - pad) {
+            b.x = W - b.r - pad;
+            b.vx *= -0.9;
+          }
+          if (b.y < b.r + pad) {
+            b.y = b.r + pad;
+            b.vy *= -0.9;
+          }
+          if (b.y > H - b.r - pad) {
+            b.y = H - b.r - pad;
+            b.vy *= -0.9;
+          }
+        }
+
+        acc -= FIXED_DT;
+      }
 
       for (const b of bubblesRef.current) {
-        const seed = timeRef.current * 10 + b.x * 0.01 + b.y * 0.01;
-        const n1 = hash01(seed);
-        const n2 = hash01(seed + 100);
-
-        const angle = n1 * Math.PI * 2;
-        const force = (n2 - 0.5) * wanderStrength;
-
-        b.vx += Math.cos(angle) * force;
-        b.vy += Math.sin(angle) * force;
-
-        // friction
-        b.vx *= friction;
-        b.vy *= friction;
-
-        // clamp speed
-        const sp = Math.hypot(b.vx, b.vy);
-        if (sp > maxSpeed) {
-          b.vx = (b.vx / sp) * maxSpeed;
-          b.vy = (b.vy / sp) * maxSpeed;
-        }
-
-        // move
-        b.x += b.vx;
-        b.y += b.vy;
-
-        // bounce with size
-        const pad = 8;
-        if (b.x < b.r + pad) {
-          b.x = b.r + pad;
-          b.vx *= -0.9;
-        }
-        if (b.x > W - b.r - pad) {
-          b.x = W - b.r - pad;
-          b.vx *= -0.9;
-        }
-        if (b.y < b.r + pad) {
-          b.y = b.r + pad;
-          b.vy *= -0.9;
-        }
-        if (b.y > H - b.r - pad) {
-          b.y = H - b.r - pad;
-          b.vy *= -0.9;
+        const node = bubbleElsRef.current[b.id];
+        if (node) {
+          node.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`;
         }
       }
 
-      setBubbles([...bubblesRef.current]);
       rafRef.current = requestAnimationFrame(step);
     };
 
     rafRef.current = requestAnimationFrame(step);
+
     return () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      ro.disconnect();
     };
   }, []);
 
@@ -256,8 +280,11 @@ export default function Tech() {
             return (
               <div
                 key={b.id}
+                ref={(node) => {
+                  bubbleElsRef.current[b.id] = node;
+                }}
                 className={bubbleClass(
-                  (b.tone ?? "gray") as NonNullable<TechItem["tone"]>
+                  (b.tone ?? "blue") as NonNullable<TechItem["tone"]>,
                 )}
                 style={{
                   width: d,

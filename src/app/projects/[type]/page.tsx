@@ -16,10 +16,10 @@ export default async function Project({
   const data = PROJECTS_CONFIG[type];
   if (!data) return notFound();
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black overflow-hidden">
+    <div className="min-h-screen font-sans bg-black overflow-hidden">
       <NavBar />
       <main>
-        <div className="container mx-auto px-6 pt-32 relative">
+        <div className="container mx-auto px-6 pt-32 relative ">
           <div className="mb-16 gap-4">
             <span className="text-primary font-mono mb-2 block tracking-wider uppercase text-xs">
               SELECTED WORKS
