@@ -7,6 +7,7 @@ export default function TextInput({
   setState,
   value,
   pattern,
+  isSubmitting,
 }: {
   classNames?: string;
   placeHolder?: string;
@@ -16,6 +17,7 @@ export default function TextInput({
   name?: string;
   value: string;
   pattern?: string;
+  isSubmitting?: boolean;
 }) {
   return (
     <input
@@ -30,6 +32,7 @@ export default function TextInput({
       className={`${classNames} relative w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600`}
       value={value}
       pattern={pattern}
+      disabled={!!isSubmitting}
     ></input>
   );
 }

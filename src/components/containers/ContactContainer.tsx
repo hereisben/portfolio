@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import SelectBtn from "../buttons/SelectBtn";
 import TextInput from "../typo/TextInput";
 
@@ -11,6 +11,10 @@ export default function ContactContainer() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
+  const [cooldownText, setCooldownText] = useState("");
+  const isCoolingDown =
+    typeof cooldownUntil === "number" && cooldownUntil > Date.now();
 
   const isValidName =
     /^[a-zA-ZÀ-ỹ\s]+$/.test(name.trim()) &&
@@ -35,19 +39,45 @@ export default function ContactContainer() {
   const [sendStatus, setSendStatus] = useState<"idle" | "ok" | "error">("idle");
   const [sendError, setSendError] = useState<string>("");
 
-  const callResend = async () => {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message, interest: selected }),
-    });
+  useEffect(() => {
+    const raw = localStorage.getItem("contactCooldownUntil");
+    if (!raw) return;
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error || "Send failed");
-  };
+    const ts = Number(raw);
+    if (!Number.isFinite(ts)) {
+      localStorage.removeItem("contactCooldownUntil");
+      return;
+    }
+
+    if (ts > Date.now()) {
+      setCooldownUntil(ts);
+    } else {
+      localStorage.removeItem("contactCooldownUntil");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!cooldownUntil) return;
+
+    const t = setInterval(() => {
+      const leftMs = cooldownUntil - Date.now();
+      if (leftMs <= 0) {
+        setCooldownUntil(null);
+        setCooldownText("");
+        localStorage.removeItem("contactCooldownUntil");
+        return;
+      }
+      const s = Math.ceil(leftMs / 1000);
+      setCooldownText(`Too many messages. Try again in ${s}s.`);
+    }, 1000);
+    return () => {
+      clearInterval(t);
+    };
+  }, [cooldownUntil]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSending) return;
     if (!canSend) return;
 
     try {
@@ -55,7 +85,30 @@ export default function ContactContainer() {
       setSendStatus("idle");
       setSendError("");
 
-      await callResend();
+      const payload = { name, email, message, interest: selected };
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        if (typeof data.reset === "number") {
+          setCooldownUntil(data.reset);
+          localStorage.setItem("contactCooldownUntil", String(data.reset));
+        }
+
+        setSendStatus("error");
+        setSendError("");
+        return;
+      }
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "Send failed");
+      }
 
       setSendStatus("ok");
       setName("");
@@ -119,6 +172,7 @@ export default function ContactContainer() {
             value={name}
             setState={setName}
             pattern="^[a-zA-ZÀ-ỹ\s]+$"
+            isSubmitting={isSending}
           />
           {!isValidName && name.length > 0 && (
             <p className={`${errorClass}`}>
@@ -134,6 +188,7 @@ export default function ContactContainer() {
             value={email}
             setState={setEmail}
             required={true}
+            isSubmitting={isSending}
           />
           {!isValidEmail && email.length > 0 && (
             <p className={`${errorClass}`}>
@@ -150,6 +205,7 @@ export default function ContactContainer() {
             className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:border-primary focus:outline-none transition-colors placeholder:text-neutral-600"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            disabled={isSending}
           ></textarea>
           <p className="text-xs text-neutral-400 text-right absolute right-3 bottom-3 opacity-50">
             {message.trim().length} / 500
@@ -175,6 +231,9 @@ export default function ContactContainer() {
         {sendStatus === "error" && (
           <p className="text-sm text-red-400/80">{sendError}</p>
         )}
+        {cooldownText && (
+          <p className="text-sm text-red-400/80">{cooldownText}</p>
+        )}
       </form>
       <div className="flex justify-end pt-4 gap-3">
         {/* <button
@@ -186,14 +245,16 @@ export default function ContactContainer() {
           {file ? "Change File" : "Attach File"}
         </button> */}
         <button
-          disabled={
-            !canSend || !isValidName || !isValidEmail || !isValidMessage
-          }
+          disabled={!canSend || isSending || isCoolingDown}
           form="contact-form"
           type="submit"
           className="inline-flex h-11 items-center justify-center text-sm duration-200 active:scale-95 bg-primary disabled:opacity-20 shadow-lg shadow-blue-500/25 disabled:bg-white text-black px-8 py-3 rounded-xl font-bold transition-all not-disabled:cursor-pointer hover:shadow-amber-500/40  hover:-translate-y-0.5"
         >
-          {isSending ? "Sending" : "Send Message"}
+          {isCoolingDown
+            ? "Please wait ..."
+            : isSending
+              ? "Sending"
+              : "Send Message"}
         </button>
       </div>
     </div>
