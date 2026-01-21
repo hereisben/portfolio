@@ -36,6 +36,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         src: "/bouncy.jpg",
         href: "https://github.com/hereisben/bouncy-quest",
       },
+      {
+        name: "ServicesFinder",
+        desc: "Android app that connects service providers with customers. Built with Java and Firebase. Supports search, filtering, reviews, favorites, and multi-language UI.",
+        alt: "ServicesFinder Android App",
+        src: "/servicesfinder.png",
+        href: "https://github.com/vananhtran02/ServicesFinder",
+      },
     ],
   },
   personal: {
@@ -73,6 +80,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         alt: "Mancala",
         src: "/mancala.jpg",
         href: "https://github.com/namng2/cs151group",
+      },
+      {
+        name: "ServicesFinder",
+        desc: "Android app that connects service providers with customers. Built with Java and Firebase. Supports search, filtering, reviews, favorites, and multi-language UI.",
+        alt: "ServicesFinder Android App",
+        src: "/servicesfinder.png",
+        href: "https://github.com/vananhtran02/ServicesFinder",
       },
     ],
   },
