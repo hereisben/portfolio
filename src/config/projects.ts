@@ -43,6 +43,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         src: "/servicesfinder.png",
         href: "https://github.com/vananhtran02/ServicesFinder",
       },
+      {
+        name: "Messi Career Journey",
+        desc: "Interactive net art project that reveals Lionel Messi’s career through a puzzle-style grid. Users turn on a light to uncover milestones, with videos playing for each key moment.",
+        alt: "Messi Career Journey Net Art",
+        src: "/messi.png",
+        href: "https://your-project-link-here",
+      },
     ],
   },
   personal: {
@@ -61,6 +68,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         alt: "BenNotes App",
         src: "/mern.png",
         href: "https://github.com/hereisben/ben-mern-stack-notes-app?tab=readme-ov-file",
+      },
+      {
+        name: "Messi Career Journey",
+        desc: "Interactive net art project that reveals Lionel Messi’s career through a puzzle-style grid. Users turn on a light to uncover milestones, with videos playing for each key moment.",
+        alt: "Messi Career Journey Net Art",
+        src: "/messi.png",
+        href: "https://your-project-link-here",
       },
     ],
   },
