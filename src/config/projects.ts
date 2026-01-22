@@ -50,6 +50,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         src: "/messi.png",
         href: "https://github.com/hereisben/art-109/tree/main/net-art-project",
       },
+      {
+        name: "The Networked Plant Project",
+        desc: "Real-time net art experience where users grow a shared digital plant world through presence, whispers, and mood. Built with Socket.IO and HTML5 Canvas.",
+        alt: "The Networked Plant Project",
+        src: "/networkself.jpg",
+        href: "https://github.com/hereisben/the-network-self",
+      },
     ],
   },
   personal: {
@@ -75,6 +82,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
         alt: "Messi Career Journey Net Art",
         src: "/messi.png",
         href: "https://github.com/hereisben/art-109/tree/main/net-art-project",
+      },
+      {
+        name: "The Networked Plant Project",
+        desc: "Real-time net art experience where users grow a shared digital plant world through presence, whispers, and mood. Built with Socket.IO and HTML5 Canvas.",
+        alt: "The Networked Plant Project",
+        src: "/networkself.jpg",
+        href: "https://github.com/hereisben/the-network-self",
       },
     ],
   },
