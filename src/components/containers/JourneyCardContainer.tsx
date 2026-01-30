@@ -21,9 +21,9 @@ export default function JourneyCardContainer() {
           }}
           timeRange="Jan 2026 - Current"
           label="
-  Seeking Full-Time Software Engineering Role"
-          subLabel="Open to Full-Stack / Frontend Positions"
-          desc="Actively applying for full-time software engineering roles while continuing to build and refine real projects."
+  Software Engineering Intern"
+          subLabel="IDX Exchange"
+          desc="Working as a software engineering intern, contributing to real-world features, improving production code, and strengthening full-stack and frontend development skills in a team environment."
         />
       </div>
       <div className="relative md:translate-x-1/2">
