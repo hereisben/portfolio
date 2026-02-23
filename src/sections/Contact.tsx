@@ -28,7 +28,7 @@ export default function Contact() {
             </Link>
             <Link className="max-w-max" href={"tel:+84346182583"}>
               <Desc classNames="text-white/80 hover:text-primary transition-color duration-300 ease">
-                +84 346 182 583
+                +84 976 309 431
               </Desc>
             </Link>
           </div>
