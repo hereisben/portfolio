@@ -63,6 +63,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
     title: "Personal",
     items: [
       {
+        name: "Dev Automation Platform",
+        desc: "SaaS tool for API monitoring, screenshot capture, and AI utilities. Uses Redis and BullMQ for async jobs, worker services for background processing, and AWS S3 for distributed storage. Includes monitoring alerts, incident detection, and production deployment.",
+        alt: "Dev Automation Platform",
+        src: "/dev-automation.png",
+        href: "https://github.com/hereisben/dev-automation-platform",
+      },
+      {
         name: "Procedural Jersey Generator",
         desc: "A small DSL for describing soccer jerseys. Includes a lexer, parser, semantic checker, and SVG renderer. Comes with a web playground to preview generated designs.",
         alt: "Procedural Jersey Generator",
