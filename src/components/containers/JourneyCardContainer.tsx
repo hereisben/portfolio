@@ -19,7 +19,7 @@ export default function JourneyCardContainer() {
             viewport: { amount: 0.5 },
             transition: { duration: 0.55, ease: easeOut },
           }}
-          timeRange="Jan 2026 - Current"
+          timeRange="Jan 2026 - Apr 2026"
           label="
   Software Engineering Intern"
           subLabel="IDX Exchange"
