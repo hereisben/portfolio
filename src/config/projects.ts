@@ -104,7 +104,7 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
     items: [
       {
         name: "Real Estate Property Search Platform (IDX Exchange)",
-        desc: "Full-stack property search application built with React, Node.js, Express, and MySQL. Implements filtering, pagination, and property detail views with image gallery support. Includes performance optimizations such as image preloading and production deployment on Vercel and Railway.",
+        desc: "Full-stack property search app built with React, Node.js, Express, and MySQL. Supports filtering, pagination, and image gallery with performance optimizations. Deployed on Vercel and Railway.",
         alt: "Property Search Platform",
         src: "/property.jpg",
         href: "https://idx-property-search-bennguyen.vercel.app/",
