@@ -103,6 +103,13 @@ export const PROJECTS_CONFIG: Record<string, ProjectGroup> = {
     title: "Team",
     items: [
       {
+        name: "Real Estate Property Search Platform (IDX Exchange)",
+        desc: "Full-stack property search application built with React, Node.js, Express, and MySQL. Implements filtering, pagination, and property detail views with image gallery support. Includes performance optimizations such as image preloading and production deployment on Vercel and Railway.",
+        alt: "Property Search Platform",
+        src: "/property.jpg",
+        href: "https://idx-property-search-bennguyen.vercel.app/",
+      },
+      {
         name: "2D Platformer Game",
         desc: "2D platformer built with Unity and deployed to WebGL. Programming, UI, sound, and deployment handled end to end. Level design and assets handled by a teammate.",
         alt: "Bouncy Quest",
