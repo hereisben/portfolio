@@ -86,25 +86,59 @@ export default function Tech() {
   const bubbleElsRef = useRef<Record<string, HTMLDivElement | null>>({});
 
   const seed: TechItem[] = [
-    { id: "react", label: "React", size: "lg", tone: "lime", x: 18, y: 45 },
-    { id: "node", label: "Node.js", size: "lg", tone: "blue", x: 30, y: 72 },
-    { id: "ts", label: "TypeScript", size: "xl", tone: "teal", x: 83, y: 22 },
+    // 🔥 CORE
+    { id: "ts", label: "TypeScript", size: "xl", tone: "teal", x: 82, y: 20 },
+    { id: "react", label: "React", size: "lg", tone: "teal", x: 20, y: 40 },
+    { id: "node", label: "Node.js", size: "lg", tone: "teal", x: 30, y: 70 },
 
-    { id: "mongo", label: "MongoDB", size: "md", tone: "lime", x: 44, y: 52 },
-    { id: "php", label: "PHP", size: "md", tone: "blue", x: 45, y: 66 },
-
-    { id: "next", label: "Next.js", size: "sm", tone: "blue", x: 41, y: 18 },
-    { id: "mysql", label: "MySQL", size: "sm", tone: "green", x: 62, y: 20 },
+    // ⚡ FRONTEND
+    { id: "next", label: "Next.js", size: "md", tone: "lime", x: 40, y: 15 },
     {
       id: "tailwind",
       label: "Tailwind",
       size: "sm",
       tone: "lime",
-      x: 77,
-      y: 42,
+      x: 78,
+      y: 40,
+    },
+    {
+      id: "shadcn",
+      label: "shadcn/ui",
+      size: "sm",
+      tone: "lime",
+      x: 68,
+      y: 45,
     },
 
-    { id: "framer", label: "Framer", size: "md", tone: "purple", x: 78, y: 74 },
+    // 🧠 BACKEND
+    { id: "express", label: "Express", size: "md", tone: "blue", x: 35, y: 85 },
+    {
+      id: "postgres",
+      label: "PostgreSQL",
+      size: "md",
+      tone: "blue",
+      x: 60,
+      y: 25,
+    },
+    { id: "mysql", label: "MySQL", size: "sm", tone: "blue", x: 70, y: 10 },
+
+    // ⚙️ INFRA
+    { id: "redis", label: "Redis", size: "md", tone: "purple", x: 55, y: 60 },
+    { id: "bullmq", label: "BullMQ", size: "sm", tone: "purple", x: 65, y: 75 },
+    { id: "docker", label: "Docker", size: "sm", tone: "purple", x: 50, y: 80 },
+
+    // CLOUD
+    { id: "aws", label: "AWS S3", size: "sm", tone: "green", x: 75, y: 55 },
+
+    // UI / MOTION
+    {
+      id: "framer",
+      label: "Framer Motion",
+      size: "sm",
+      tone: "purple",
+      x: 80,
+      y: 70,
+    },
   ];
 
   useEffect(() => {
